@@ -20,6 +20,19 @@ namespace DataParser
             }
         }
 
+        public static void WriteAssetList(string writePath, IEnumerable<Asset> list)
+        {
+            XmlSerializer serializer = new XmlSerializer (typeof(Assets));
+            Assets assets = new Assets();
+            assets.Asset = (List<Asset>?)list;
+
+            using (FileStream fs = new FileStream(writePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (GZipStream ws = new GZipStream(fs, CompressionMode.Compress))
+            {
+                serializer.Serialize(ws, assets);
+            }
+        }
+
 #if DEBUG
         public static void ExportAssets(string rdaFile, string outFile)
         {

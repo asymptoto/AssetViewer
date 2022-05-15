@@ -24,14 +24,19 @@ if (!app.Environment.IsDevelopment())
 // Populate database
 var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<AssetContext>();
 var assets = DataParser.Main.ReadDataFile(Path.Combine("Data", "assets.dat"))!;
-foreach (Asset asset in assets.Asset!)
-{
-    try
+
+using (FileStream fs = new FileStream("C:\\Users\\Torben\\Desktop\\rejected.xml", FileMode.Create, FileAccess.Write, FileShare.Read))
+using (StreamWriter ws = new StreamWriter(fs))
+    foreach (Asset asset in assets.Asset!)
     {
-        context.Assets!.Add((DatabaseAsset)asset);
-        AssetXmlMap.Assets[asset.Values!.Standard!.GUID] = asset;
-    } catch (InvalidOperationException) { }
-}
+        try
+        {
+            context.Assets!.Add((DatabaseAsset)asset);
+            AssetXmlMap.Assets[asset.Values!.Standard!.GUID] = asset;
+        } catch (InvalidOperationException) {
+            ws.Write(AssetXmlMap.PrettyPrint(asset)+"\n");
+        }
+    }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
