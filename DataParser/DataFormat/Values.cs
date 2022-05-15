@@ -12,6 +12,12 @@ namespace DataParser.DataFormat
         [XmlElement(ElementName = "Standard")]
         public Standard? Standard { get; set; }
 
+        [XmlElement(ElementName = "Name")]
+        public string? Name { get; set; }
+
+        [XmlElement(ElementName = "Text")]
+        public Text? Text { get; set; }
+
         [XmlAnyElement]
         public XmlElement[]? XmlElements { get; set; }
     }

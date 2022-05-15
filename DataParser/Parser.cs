@@ -1,12 +1,17 @@
 ﻿using DataParser.DataFormat;
 using System.IO.Compression;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace DataParser
 {
-    public class Main
+    public static class Parser
     {
+        private static readonly XmlWriterSettings Settings = new XmlWriterSettings { Encoding = new UTF8Encoding(false) };
+
+        private static readonly XmlSerializer Serializer = new XmlSerializer(typeof(Assets));
+
         public static Assets ReadDataFile(string path)
         {
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -20,16 +25,13 @@ namespace DataParser
             }
         }
 
-        public static void WriteAssetList(string writePath, IEnumerable<Asset> list)
+        public static void WriteAssets(string writePath, Assets assets)
         {
-            XmlSerializer serializer = new XmlSerializer (typeof(Assets));
-            Assets assets = new Assets();
-            assets.Asset = (List<Asset>?)list;
-
             using (FileStream fs = new FileStream(writePath, FileMode.Create, FileAccess.Write, FileShare.None))
             using (GZipStream ws = new GZipStream(fs, CompressionMode.Compress))
             {
-                serializer.Serialize(ws, assets);
+                var xmlWriter = XmlWriter.Create(ws, Settings);
+                Serializer.Serialize(xmlWriter, assets);
             }
         }
 
@@ -58,6 +60,6 @@ namespace DataParser
                 }
             }
         }
-    }
 #endif
+    }
 }

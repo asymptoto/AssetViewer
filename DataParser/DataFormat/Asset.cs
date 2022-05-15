@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Xml;
+using System.Xml.Serialization;
 
 namespace DataParser.DataFormat
 {
@@ -11,7 +12,7 @@ namespace DataParser.DataFormat
         [XmlElement(ElementName = "Values")]
         public Values? Values { get; set; }
 
-        [XmlElement(ElementName = "BaseAssetGUID")]
-        public int? BaseAssetGUID { get; set; }
+        [XmlAnyElement]
+        public XmlElement[]? XmlElements { get; set; }
     }
 }

@@ -1,11 +1,13 @@
-﻿@using DataParser.DataFormat
+﻿@using Microsoft.AspNetCore.Components
 @using WebApp.Data
-@model Asset
+@using WebApp.Misc
+@using Markdig
+@model DatabaseAsset
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div style="white-space: pre-wrap">
-    @AssetXmlMap.PrettyPrint(132404)
+    @Html.Raw(HtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(Model)))
 </div>

@@ -16,3 +16,20 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.border-smooth {
+    border-radius: 5px;
+}
+
+.thicc {
+    height: 30px;
+    font-size: 15px;
+    vertical-align: middle;
+    padding: 3px 5px 3px 5px;
+}
+
+details {
+    font-size: 16px;
+    background-color: aliceblue;
+    white-space: nowrap;
+}
