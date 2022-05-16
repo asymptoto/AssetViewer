@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.3.1" />
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
+    <PackageReference Include="HtmlGeneration.XmlToHtmlTree" Version="1.0.0" />
     <PackageReference Include="Markdig" Version="0.30.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
@@ -35,6 +37,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataParser\DataParser.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Search\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components
 @using WebApp.Data
-@using WebApp.Misc
+@using HtmlGeneration.XmlToHtmlTree
 @using Markdig
 @model DatabaseAsset
 
@@ -9,5 +9,5 @@
 }
 
 <div style="white-space: pre-wrap">
-    @Html.Raw(HtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(Model)))
+    @Html.Raw(XmlToHtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(Model)))
 </div>

@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - WebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/todc-bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
 </head>
@@ -13,11 +14,13 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" style="background-color: ghostwhite; justify-content: space-between">
             <div class="container-fluid" style="margin: 3px 20px 3px 20px">
-                <nobr>
-                    <a class="navbar-brand thicc" style="font-size: 20px" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <input type="text" class="border-smooth thicc" id="search_string" style="width: 150%; margin: 0px 0px 0px 75px"/>
-                    <button class="btn btn-primary border-smooth thicc" id="submit_btn" style="background-color: blue">Search</button>
-                </nobr>
+                    <a class="navbar-brand thicc" style="font-size: 20px; margin: 5px 0px 0px" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <div style="float: right; width: 40%">
+                        <nobr>
+                            <input type="text" class="border-smooth thicc" id="search_string" style="width: 80%;"/>
+                            <button class="btn btn-primary border-smooth thicc" id="submit_btn" style="background-color: blue;">Search</button>
+                        </nobr>
+                    </div>
             </div>
         </nav>
     </header>
@@ -29,7 +32,8 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            Anno 1800 Asset Viewer
+            Anno 1800 Asset Viewer (v1.0.0) &copy; Torben Oeldemann
+            <i class="fa fa-github fa-3x" style="float: right; margin: 9px 9px 9px 9px" onclick="window.open('https://github.com/asymptoto/AssetViewer', '_blank')"></i>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
