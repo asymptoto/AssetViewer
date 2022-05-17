@@ -18,17 +18,7 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            var assets = from a in _context.Assets
-                         where a.Text != null && a.Text.ToLower().Contains("reefer")
-                         select a;
-            if (assets.Any())
-            {
-                return View(assets);
-            }
-            else
-            {
-                return NotFound();
-            }
+            return View();
         }
 
         public IActionResult Privacy()

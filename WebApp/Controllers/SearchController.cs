@@ -18,8 +18,10 @@ namespace WebApp.Controllers
         {
             if (perPage > 50) return BadRequest();
             if (page == null) page = 1;
-            if (perPage == null) perPage = 10;
+            if (perPage == null || perPage == 0) perPage = 10;
             ViewData["SearchString"] = query;
+            ViewData["PerPage"] = perPage;
+            ViewData["Page"] = page;
             query = query.ToLower();
 
             string? template = null;
@@ -83,8 +85,9 @@ namespace WebApp.Controllers
                                orderby a.GUID ascending
                                select a;
 
-            Console.WriteLine(query);
-            return View(searchResult);
+            int skip = (int)((page! - 1) * perPage!);
+            ViewData["TotalPages"] = (int)Math.Ceiling((double)(searchResult.Count() / (int)perPage));
+            return View(searchResult.Skip(skip).Take((int)perPage));
         }
     }
 }
