@@ -18,7 +18,7 @@
                     <a class="navbar-brand thicc" style="font-size: 20px; margin: 5px 0px 0px" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     <div style="float: right; width: 40%">
                         <nobr>
-                            <input type="text" class="border-smooth thicc" id="searchBar" style="width: 80%;" onfocus="searchBar.style.backgroundColor = 'white'" onkeypress="enterPressed(event, this)" value="@ViewData["SearchString"]" />
+                            <input type="search" class="border-smooth thicc" id="searchBar" style="width: 80%;" onfocus="searchBar.style.backgroundColor = 'white'" onkeypress="enterPressed(event, this)" value="@ViewData["SearchString"]" />
                             <button class="btn btn-primary border-smooth thicc" id="submitBtn" style="background-color: blue;" onclick="search()">Search</button>
                         </nobr>
                     </div>

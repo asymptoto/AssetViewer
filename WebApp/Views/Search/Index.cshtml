@@ -10,16 +10,35 @@
 }
 
 <div style="font-size: 18px">
-    @foreach(DatabaseAsset asset in Model.AsEnumerable())
-    {
-        try{
-            <i class="fa fa-code" style="cursor: pointer" onclick="window.open('/asset?guid=@asset.GUID', '_blank')"></i>@AssetXmlMap.Summary(asset)
-            @Html.Raw(XmlToHtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(asset)))
-            <br />
-        } catch (Exception ex)
+    <div class="navbar" style="float: left; width: 100%">
+        <div>
+            <label for="perPageSelect" style="white-space: pre-wrap">Results per page </label>
+            <select id="perPageSelect" onchange="search()" style="">
+                <option>5</option>
+                <option selected>10</option>
+                <option>20</option>
+                <option>50</option>
+            </select>
+        </div>
+    </div>
+    <div class="container">
+        @if (!Model.Any())
         {
-            Console.Error.WriteLine($"Error {ex.GetType()} in View/Index.cshtml\nThe parsed xml code was:");
-            Console.Error.WriteLine(AssetXmlMap.PrettyPrint(asset));
+            <div>
+                No results
+            </div>
         }
-    }
+        @foreach(DatabaseAsset asset in Model.AsEnumerable())
+        {
+            try{
+                <i class="fa fa-code" style="cursor: pointer" onclick="window.open('/asset?guid=@asset.GUID', '_blank')"></i>@AssetXmlMap.Summary(asset)
+                @Html.Raw(XmlToHtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(asset)))
+                <br />
+            } catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error {ex.GetType()} in View/Index.cshtml\nThe parsed xml code was:");
+                Console.Error.WriteLine(AssetXmlMap.PrettyPrint(asset));
+            }
+        }
+    </div>
 </div>

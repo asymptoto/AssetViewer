@@ -1,7 +1,7 @@
 ﻿function search() {
     var searchBar = document.getElementById('searchBar');
     if (searchBar.value != "") {
-        window.location = '/search?query=' + searchBar.value;
+        window.location = '/search?query=' + escape(searchBar.value);
     } else {
         searchBar.style.backgroundColor = "#ffcccc";
     }
