@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Components
+@using Microsoft.EntityFrameworkCore.Query.Internal
+@using WebApp.Data
+@using HtmlGeneration.XmlToHtmlTree
+@using Markdig
+@model EntityQueryable<DatabaseAsset>
+
+@{
+    ViewData["Title"] = "Search Assets";
+}
+
+<div style="font-size: 18px">
+    @foreach(DatabaseAsset asset in Model.AsEnumerable())
+    {
+        try{
+            <i class="fa fa-file-code-o" onclick="window.open('/asset?guid=@asset.GUID', '_blank')"></i>@AssetXmlMap.Summary(asset)
+            @Html.Raw(XmlToHtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(asset)))
+            <br />
+        } catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Error {ex.GetType()} in View/Index.cshtml\nThe parsed xml code was:");
+            Console.Error.WriteLine(AssetXmlMap.PrettyPrint(asset));
+        }
+    }
+</div>

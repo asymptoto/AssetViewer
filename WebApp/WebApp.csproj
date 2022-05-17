@@ -43,4 +43,11 @@
     <Folder Include="Views\Search\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Search\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

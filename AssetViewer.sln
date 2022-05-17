@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataParser", "DataParser\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{08DF82BA-CD57-489C-8198-BEA0B72502A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{ABFE8A01-3211-450A-B25C-BC99E3529388}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{ABFE8A01-3211-450A-B25C-BC99E3529388}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

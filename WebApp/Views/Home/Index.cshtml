@@ -1,13 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Components
 @using WebApp.Data
 @using HtmlGeneration.XmlToHtmlTree
-@using Markdig
-@model DatabaseAsset
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div style="white-space: pre-wrap">
-    @Html.Raw(XmlToHtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(Model)))
+<div style="white-space: pre-wrap; font-size: 18px">
 </div>

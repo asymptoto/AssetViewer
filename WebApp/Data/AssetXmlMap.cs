@@ -23,6 +23,7 @@ namespace WebApp.Data
                 string text = Encoding.UTF8.GetString(ms.ToArray());
                 text = text.Replace(" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"", "");
                 text = Regex.Replace(text, "\t*<[a-zA-Z]* xsi:nil=\"true\" \\/>\n", "");
+                text = text.Replace(" xsi:nil=\"true\" ", "");
                 return text;
             }
         }
@@ -38,6 +39,22 @@ namespace WebApp.Data
             return PrettyPrint(asset.GUID);
         }
 
-        
+        private static string Trim(string text, int maxChars = 100)
+        {
+            if (text.Length > maxChars)
+            {
+                return text.Substring(0, maxChars-3) + "...";
+            }
+            return text;
+        }
+
+        public static string Summary(DatabaseAsset asset)
+        {
+            return " GUID: " + asset.GUID + 
+                 ", Template: " + (asset.Template != null ? asset.Template : "None") +
+                 ", ID: " + (asset.Id != null ? asset.Id : "None") +
+                 ", Name: " + (asset.Name != null ? asset.Name : "None") +
+                 ", Text: " + (asset.Text != null ? Trim(asset.Text) : "None");
+        }
     }
 }

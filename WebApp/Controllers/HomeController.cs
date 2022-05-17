@@ -23,7 +23,7 @@ namespace WebApp.Controllers
                          select a;
             if (assets.Any())
             {
-                return View(assets.First());
+                return View(assets);
             }
             else
             {
