@@ -2,14 +2,13 @@
 @using Microsoft.EntityFrameworkCore.Query.Internal
 @using WebApp.Data
 @using HtmlGeneration.XmlToHtmlTree
-@using WebApp.Misc
 @model EntityQueryable<DatabaseAsset>
 
 @{
     ViewData["Title"] = "Search";
 }
 
-<div style="font-size: 18px">
+<div style="font-size: 16px">
     <div class="navbar" style="float: left; width: 100%">
         <div>
             <label for="perPageSelect" style="white-space: pre-wrap">Results per page </label>
@@ -19,6 +18,7 @@
                 <option>20</option>
                 <option>50</option>
             </select>
+            <script>document.getElementById('perPageSelect').value = '@ViewData["PerPage"]'</script>
         </div>
     </div>
     <div class="container">
@@ -43,7 +43,7 @@
     </div>
     <br/>
     <div style="width: 100%; text-align: left">
-        <button style="height: 30px; width: 30px" @if(1 == (int)ViewData["Page"]!) {
+        <button onclick="search(1)" style="height: 30px; width: 30px" @if(1 == (int)ViewData["Page"]!) {
             @:disabled
         }>1</button>
         @if((int)ViewData["Page"]! > 4)
@@ -62,11 +62,9 @@
         }
         @if((int)ViewData["TotalPages"]! > 1)
         {
-        <button style="height: 30px; min-width: 30px" @if((int)ViewData["TotalPages"]! == (int)ViewData["Page"]!) {
+        <button onclick="search(@ViewData["TotalPages"])" style="height: 30px; min-width: 30px" @if((int)ViewData["TotalPages"]! == (int)ViewData["Page"]!) {
             @:disabled
         }>@ViewData["TotalPages"]</button>
         }
     </div>
 </div>
-
-<script defer>document.getElementById('perPageSelect').value = '@ViewData["PerPage"]'</script>

@@ -85,8 +85,10 @@ namespace WebApp.Controllers
                                orderby a.GUID ascending
                                select a;
 
+            
+            
             int skip = (int)((page! - 1) * perPage!);
-            ViewData["TotalPages"] = (int)Math.Ceiling((double)(searchResult.Count() / (int)perPage));
+            ViewData["TotalPages"] = (int)Math.Ceiling((double)(searchResult.Count() / (int)perPage)) + 1;
             return View(searchResult.Skip(skip).Take((int)perPage));
         }
     }
