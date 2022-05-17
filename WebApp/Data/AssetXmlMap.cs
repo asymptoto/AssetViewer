@@ -39,7 +39,7 @@ namespace WebApp.Data
             return PrettyPrint(asset.GUID);
         }
 
-        private static string Trim(string text, int maxChars = 100)
+        private static string Trim(string text, int maxChars = 60)
         {
             if (text.Length > maxChars)
             {
@@ -51,10 +51,10 @@ namespace WebApp.Data
         public static string Summary(DatabaseAsset asset)
         {
             return " GUID: " + asset.GUID + 
-                 ", Template: " + (asset.Template != null ? asset.Template : "None") +
-                 ", ID: " + (asset.Id != null ? asset.Id : "None") +
-                 ", Name: " + (asset.Name != null ? asset.Name : "None") +
-                 ", Text: " + (asset.Text != null ? Trim(asset.Text) : "None");
+                 (asset.Template != null ? $", Template: {asset.Template}" : "") +
+                 (asset.Id != null ? $", ID: {asset.Id}" : "") +
+                 (asset.Name != null ? $", Name: {asset.Name}" : "") +
+                 (asset.Text != null ? $", Text: {Trim(asset.Text)}" : "");
         }
     }
 }

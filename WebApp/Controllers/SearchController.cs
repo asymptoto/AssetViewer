@@ -15,6 +15,7 @@ namespace WebApp.Controllers
 
         public IActionResult Index(string query, int? page, int? perPage)
         {
+            if (perPage > 50) return BadRequest();
             if (page == null) page = 0;
             if (perPage == null) perPage = 5;
 
@@ -27,6 +28,8 @@ namespace WebApp.Controllers
                                || (a.Template ?? "").ToLower().Contains(query)
                                || (a.Text ?? "").ToLower().Contains(query)
                                select a;
+
+            ViewData["SearchText"] = query;
             return View(searchResult.OrderBy(asset => asset.GUID));
         }
     }

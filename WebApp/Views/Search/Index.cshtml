@@ -13,7 +13,7 @@
     @foreach(DatabaseAsset asset in Model.AsEnumerable())
     {
         try{
-            <i class="fa fa-file-code-o" onclick="window.open('/asset?guid=@asset.GUID', '_blank')"></i>@AssetXmlMap.Summary(asset)
+            <i class="fa fa-code" style="cursor: pointer" onclick="window.open('/asset?guid=@asset.GUID', '_blank')"></i>@AssetXmlMap.Summary(asset)
             @Html.Raw(XmlToHtmlTreeConverter.XmlToHtmlConvert(AssetXmlMap.PrettyPrint(asset)))
             <br />
         } catch (Exception ex)

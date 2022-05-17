@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/todc-bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <link rel="icon" href="~/img/anno_icon.png" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
 </head>
@@ -17,8 +18,8 @@
                     <a class="navbar-brand thicc" style="font-size: 20px; margin: 5px 0px 0px" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     <div style="float: right; width: 40%">
                         <nobr>
-                            <input type="text" class="border-smooth thicc" id="search_string" style="width: 80%;"/>
-                            <button class="btn btn-primary border-smooth thicc" id="submit_btn" style="background-color: blue;">Search</button>
+                            <input type="text" class="border-smooth thicc" id="searchBar" style="width: 80%;" onfocus="searchBar.style.backgroundColor = 'white'" onkeypress="enterPressed(event, this)" value="@ViewData["SearchString"]" />
+                            <button class="btn btn-primary border-smooth thicc" id="submitBtn" style="background-color: blue;" onclick="search()">Search</button>
                         </nobr>
                     </div>
             </div>
@@ -40,6 +41,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/search.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
