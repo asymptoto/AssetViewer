@@ -89,6 +89,7 @@ namespace WebApp.Controllers
             
             int skip = (int)((page! - 1) * perPage!);
             ViewData["TotalPages"] = (int)Math.Ceiling((double)(searchResult.Count() / (int)perPage)) + 1;
+            GC.Collect();
             return View(searchResult.Skip(skip).Take((int)perPage));
         }
     }

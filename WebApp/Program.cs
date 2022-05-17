@@ -44,3 +44,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+for (int i = 0; i < 10; i++)
+{
+    GC.Collect();
+}
