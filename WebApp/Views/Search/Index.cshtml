@@ -50,7 +50,7 @@
         {
         @:...
         }
-        @for(int i=Math.Max((int)ViewData["Page"]! - 2, 2); i<Math.Min((int)ViewData["Page"]! + 2, (int)ViewData["TotalPages"]!); i++)
+        @for(int i=Math.Max((int)ViewData["Page"]! - 2, 2); i<Math.Min((int)ViewData["Page"]! + 3, (int)ViewData["TotalPages"]!); i++)
         {
         <button onclick="search(@i)" style="height: 30px; min-width: 30px" @if(i == (int)ViewData["Page"]!) {
             @:disabled

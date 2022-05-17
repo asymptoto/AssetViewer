@@ -6,5 +6,32 @@
     ViewData["Title"] = "Home";
 }
 
+<script>
+    function link1() { window.location = 'search?query=bread%20maker&perpage=10' }
+    function link2() { window.location = 'search?query=%23template%3A"product"%20%23text%3A"gold"&perpage=10' }
+    function link3() { window.location = 'search?query=%23template%3A"cultureitem"%20orca&perpage=10' }
+</script>
+
 <div style="white-space: pre-wrap; font-size: 18px">
+    Here you can search and view Anno 1800 assets. I found in very cumbersome to search in the native .rda files and opening them can take ages.<br />
+    <b>Searching</b>
+    Currently, you can search for specific tags <i>Template</i>, <i>GUID</i>, <i>Name</i> and <i>Text</i> or you can do a general search.
+    To search specific tags, you can use the syntax <i>#[Tag]:"[Search string]"</i> so if you want to search for the template <b>TradeShip</b> 
+    and the text <i>Schooner</i>, you need to search for <i>#template:"tradeship" #text:"schooner"</i>.
+
+    You can view the raw XML code of an item by clicking on the <i class="fa fa-code" style="cursor: pointer"></i> icon left of the summary.
+
+    You can find the full list of templates <a href="~/data/templates.txt">Here</a>
+
+
+    <b>Examples</b>
+    <div class="container-fluid" style="text-align: center">
+        <nobr>
+            <img src="~/img/icon_bread.png" onclick="link1()" style="cursor: pointer"/>
+            <img src="~/img/icon_gold.png" onclick="link2()" style="cursor: pointer"/>
+            <img src="~/img/icon_orca.png" onclick="link3()" style="cursor: pointer"/>
+        </nobr>
+    </div>
+
+    <b>Planned feature: </b>Display a short summary when hovering over foreign GUID and redirect to that asset on click
 </div>
