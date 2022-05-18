@@ -34,7 +34,6 @@ foreach (Asset asset in assets.Asset!)
 }
 context.SaveChanges();
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -45,6 +44,7 @@ app.MapControllerRoute(
 
 app.Run();
 
+// not pretty but its works until i find out how to configure the gc
 for (int i = 0; i < 10; i++)
 {
     GC.Collect();
