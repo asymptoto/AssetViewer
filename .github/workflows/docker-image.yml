@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag asymptoto/myrepo:$(date +%s)
+      run: docker build . --file WebApp/Dockerfile --tag asymptoto/myrepo:$(date +%s)
